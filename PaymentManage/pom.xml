@@ -24,4 +24,36 @@
       </plugin>
     </plugins>
   </build>
+  
+  <dependencies>
+	 <dependency>
+		 <groupId>com.sun.jersey</groupId>
+		 <artifactId>jersey-bundle</artifactId>
+		 <version>1.19.4</version>
+	 </dependency>
+	 
+	 <dependency>
+		 <groupId>com.sun.jersey</groupId>
+		 <artifactId>jersey-core</artifactId>
+		 <version>1.19.4</version>
+	</dependency>
+	
+	<dependency>
+		 <groupId>com.sun.jersey</groupId>
+		 <artifactId>jersey-server</artifactId>
+		 <version>1.19.4</version>
+	 </dependency>
+	 
+	 <dependency>
+		 <groupId>org.json</groupId>
+		 <artifactId>json</artifactId>
+		 <version>20170516</version>
+	 </dependency>
+	 
+	 <dependency>
+		 <groupId>mysql</groupId>
+		 <artifactId>mysql-connector-java</artifactId>
+		 <version>8.0.19</version>
+	</dependency>
+</dependencies>
 </project>
