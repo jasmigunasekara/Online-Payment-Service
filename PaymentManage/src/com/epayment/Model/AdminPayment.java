@@ -42,7 +42,10 @@ public class AdminPayment {
 				 String payAmount = Double.toString(rs.getDouble("payAmount"));
 				
 				  // Add into the html table
-				 output += "<tr><td>" + payCardType + "</td>";
+				 output += "<tr><td><input id='hidItemIDUpdate'"
+						 + "name='hidItemIDUpdate' " 
+						 +"type='hidden' value='" + payID
+						 + "'>" + payCardType + "</td>";
 				 output += "<td>" + payCardNO + "</td>";
 				 output += "<td>" + payExpiryDate + "</td>";
 				 output += "<td>" + payCVV + "</td>";
@@ -51,11 +54,10 @@ public class AdminPayment {
 				 output += "<td>" + payAmount + "</td>";
 				 
 				 // buttons
-				 output += "<td><input name='btnUpdate' type='button' value='Update'class='btn btn-secondary'></td>"
-				 + "<td><form method='post' action='customerpayments.jsp'>"
-				 + "<input name='btnRemove' type='submit' value='Remove'class='btn btn-danger'>"
-				 + "<input name='payID' type='hidden' value='" + payID
-				 + "'>" + "</form></td></tr>";
+				 output += "<td><input name='btnUpdate' type='button' value='Update'"
+						 + "class='btnUpdate btn btn-secondary' data-itemid='\" + itemID + \"' ></td>"
+						 + "<td><input name='btnRemove' type='button' value='Remove' "
+						 + "class='btnRemove btn btn-danger' data-itemid='" + payID + "'></td></tr>"; 
 			 }
 			 
 			 con.close();
