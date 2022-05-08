@@ -98,11 +98,13 @@ public class AdminPayment {
 			 preparedStmt.execute();
 			 con.close();
 			 
-			 output = "Deleted successfully";
+			 String newPayments = readItems();
+			 output = "{\"status\":\"success\", \"data\": \"" +
+			 newPayments + "\"}"; 
 		 }
 		 catch (Exception e)
 		 {
-			 output = "Error while deleting the customer payment.";
+			 output = "{\"status\":\"error\", \"data\": \"Error while deleting the customer payment.\"}";
 			 System.err.println(e.getMessage());
 		 }
 		 
