@@ -33,7 +33,7 @@ public class CustomerPaymentsAPI extends HttpServlet
     {
     	String output = payObj.insertCustomerPayment(request.getParameter("payCardType"),
 				request.getParameter("payCardNO"),
-				request.getParameter("payExpiryDate"),
+				request.getParameter("payEXpiryDate"),
 				request.getParameter("payCVV"),
 				request.getParameter("payDate"),
 				request.getParameter("payTotalAmount"),
