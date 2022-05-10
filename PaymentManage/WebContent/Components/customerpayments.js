@@ -14,7 +14,7 @@ $(document).on("click", "#btnSave", function(event)
  	$("#alertError").hide();
 
 	// Form validation-------------------
-	var status = validateItemForm();
+	var status = validateCustomerPaymentForm();
 	if (status != true)
 	{
 		 $("#alertError").text(status);
@@ -23,23 +23,7 @@ $(document).on("click", "#btnSave", function(event)
  	}
 
 	// If valid-------------------------
- 	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
-
-	$.ajax(
- 	{
- 		url : "AdminPaymentsAPI",
- 		type : type,
- 		data : $("#formAdminPayment").serialize(),
- 		dataType : "text",
- 		complete : function(response, status)
- 		{
- 			onItemSaveComplete(response.responseText, status);
- 		}
- 	}); 
-
-
-	// If valid-------------------------
- 	var type = ($("#hidItemIDSave").val() == "") ? "POST" : "PUT";
+ 	var type = ($("#hidPayIDSave").val() == "") ? "POST" : "PUT";
 
 	$.ajax(
  	{
@@ -49,12 +33,12 @@ $(document).on("click", "#btnSave", function(event)
  		dataType : "text",
  		complete : function(response, status)
  		{
- 			onItemSaveComplete(response.responseText, status);
+ 			onCustomerPaymentSaveComplete(response.responseText, status);
  		}
  	}); 
  });
 
-function onItemSaveComplete(response, status)
+function onCustomerPaymentSaveComplete(response, status)
 	{
 		if (status == "success")
 		{
@@ -63,7 +47,7 @@ function onItemSaveComplete(response, status)
 			 {
  				$("#alertSuccess").text("Successfully saved.");
  				$("#alertSuccess").show();
- 				$("#divItemsGrid").html(resultSet.data);
+ 				$("#divCustomerPaymentsGrid").html(resultSet.data);
  			 } 
  			 else if (resultSet.status.trim() == "error")
 			 {
@@ -81,37 +65,21 @@ function onItemSaveComplete(response, status)
  			$("#alertError").text("Unknown error while saving..");
  			$("#alertError").show();
  		}
-		$("#hidItemIDSave").val("");
- 		$("#formItem")[0].reset();
+		$("#hidPayIDSave").val("");
+ 		$("#formCustomerPayment")[0].reset();
 }
 
 // UPDATE==========================================
 	$(document).on("click", ".btnUpdate", function(event)
 	{
-		 $("#hidItemIDSave").val($(this).data("payid"));
+		 $("#hidPayIDSave").val($(this).data("payid"));
 		 $("#payCardType").val($(this).closest("tr").find('td:eq(0)').text());
-		 $("#payCardNo").val($(this).closest("tr").find('td:eq(1)').text());
-		 $("#payExpirtDate").val($(this).closest("tr").find('td:eq(2)').text());
+		 $("#payCardNO").val($(this).closest("tr").find('td:eq(1)').text());
+		 $("#payExpiryDate").val($(this).closest("tr").find('td:eq(2)').text());
  		 $("#payCVV").val($(this).closest("tr").find('td:eq(3)').text());
 		 $("#payDate").val($(this).closest("tr").find('td:eq(4)').text());
 		 $("#payTotalAmount").val($(this).closest("tr").find('td:eq(5)').text());
 	     $("#payAmount").val($(this).closest("tr").find('td:eq(6)').text());
-	});
-	
-	$(document).on("click", ".btnRemove", function(event)
-	{
- 		$.ajax(
- 		{
- 			url : "AdminPaymentsAPI",
- 			type : "DELETE",
- 			data : "payID=" + $(this).data("payid"),
- 			dataType : "text",
- 			complete : function(response, status)
- 			{
- 				onItemDeleteComplete(response.responseText, status);
- 			}
- 		});
-	
 	});
 
 	$(document).on("click", ".btnRemove", function(event)
@@ -124,12 +92,12 @@ function onItemSaveComplete(response, status)
  			dataType : "text",
  			complete : function(response, status)
  			{
- 				onItemDeleteComplete(response.responseText, status);
+ 				onCustomerPaymentDeleteComplete(response.responseText, status);
  			}
  		});
 	});
 
-	function onItemDeleteComplete(response, status)
+	function onCustomerPaymentDeleteComplete(response, status)
 	{
 		if (status == "success")
  		{
@@ -138,7 +106,7 @@ function onItemSaveComplete(response, status)
  			{
  				$("#alertSuccess").text("Successfully deleted.");
  				$("#alertSuccess").show();
- 				$("#divItemsGrid").html(resultSet.data);
+ 				$("#divCustomerPaymentsGrid").html(resultSet.data);
  			} 
  			else if (resultSet.status.trim() == "error")
  			{
@@ -159,7 +127,7 @@ function onItemSaveComplete(response, status)
 }
 
 	// CLIENT-MODEL================================================================
-	function validateItemForm()
+	function validateCustomerPaymentForm()
 	{
 		// CARDTYPE
 		if ($("#payCardType").val().trim() == "")

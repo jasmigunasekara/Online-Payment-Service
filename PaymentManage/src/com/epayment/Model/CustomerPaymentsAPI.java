@@ -33,7 +33,7 @@ public class CustomerPaymentsAPI extends HttpServlet
     {
     	String output = payObj.insertCustomerPayment(request.getParameter("payCardType"),
 				request.getParameter("payCardNO"),
-				request.getParameter("payEXpiryDate"),
+				request.getParameter("payExpiryDate"),
 				request.getParameter("payCVV"),
 				request.getParameter("payDate"),
 				request.getParameter("payTotalAmount"),
@@ -73,7 +73,7 @@ public class CustomerPaymentsAPI extends HttpServlet
 				throws ServletException, IOException 
 	{
 			Map paras = getParasMap(request);
-			String output = payObj.updateCustomerPayment(paras.get("hidItemIDSave").toString(),
+			String output = payObj.updateCustomerPayment(paras.get("hidPayIDSave").toString(),
 											   paras.get("payCardType").toString(),
 											   paras.get("payCardNO").toString(),
 											   paras.get("payExpiryDate").toString(),

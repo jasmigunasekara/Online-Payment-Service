@@ -9,7 +9,7 @@ pageEncoding="ISO-8859-1"%>
 <title>Payment Management</title>
 <link rel="stylesheet" href="Views/bootstrap.min.css">
 <script src="Components/jquery-3.6.0.min.js"></script>
-<script src="Components/payments.js"></script>
+<script src="Components/customerpayments.js"></script>
 </head>
 <body>
 
@@ -17,7 +17,7 @@ pageEncoding="ISO-8859-1"%>
 	
 	<h1>Online Payment Details</h1>
 	
-	<form id="formPayment" name="formPayment">
+	<form id="formCustomerPayment" name="formCustomerPayment">
 		 Pay CardType:
 		 <input id="payCardType" name="payCardType" type="text" class="form-control form-control-sm">
 		 <br> 
@@ -41,14 +41,14 @@ pageEncoding="ISO-8859-1"%>
 		 <br>
 		 
 		 <input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
-		 <input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
+		 <input type="hidden" id="hidPayIDSave" name="hidPayIDSave" value="">
 	</form>
 	
 	<div id="alertSuccess" class="alert alert-success"></div>
 	<div id="alertError" class="alert alert-danger"></div>
 	<br>
 	
-	<div id="divItemsGrid">
+	<div id="divCustomerPaymentsGrid">
 		 <%
 		 CustomerPayment payObj = new CustomerPayment();
 		 out.print(payObj.readItems());

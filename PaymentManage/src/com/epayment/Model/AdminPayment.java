@@ -25,7 +25,7 @@ public class AdminPayment {
 					 "<th>Pay Amount</th>" +
 					 "<th>Update</th><th>Remove</th></tr>";
 
-			 String query = "select * from ecpay";
+			 String query = "select * from ecpay1";
 			 Statement stmt = con.createStatement();
 			 ResultSet rs = stmt.executeQuery(query);
 			 
@@ -42,8 +42,8 @@ public class AdminPayment {
 				 String payAmount = Double.toString(rs.getDouble("payAmount"));
 				
 				  // Add into the html table
-				 output += "<tr><td><input id='hidItemIDUpdate'"
-						 + "name='hidItemIDUpdate' " 
+				 output += "<tr><td><input id='hidPayIDUpdate'"
+						 + "name='hidPayIDUpdate' " 
 						 +"type='hidden' value='" + payID
 						 + "'>" + payCardType + "</td>";
 				 output += "<td>" + payCardNO + "</td>";
@@ -55,9 +55,9 @@ public class AdminPayment {
 				 
 				 // buttons
 				 output += "<td><input name='btnUpdate' type='button' value='Update'"
-						 + "class='btnUpdate btn btn-secondary' data-itemid='\" + itemID + \"' ></td>"
+						 + "class='btnUpdate btn btn-secondary'></td>"
 						 + "<td><input name='btnRemove' type='button' value='Remove' "
-						 + "class='btnRemove btn btn-danger' data-itemid='" + payID + "'></td></tr>"; 
+						 + "class='btnRemove btn btn-danger' data-payid='" + payID + "'></td></tr>"; 
 			 }
 			 
 			 con.close();
@@ -87,7 +87,7 @@ public class AdminPayment {
 			 {return "Error while connecting to the database for deleting."; }
 			 
 			 // create a prepared statement
-			 String query = "delete from ecpay where payID=?";
+			 String query = "delete from ecpay1 where payID=?";
 			 
 			 PreparedStatement preparedStmt = con.prepareStatement(query);
 			 

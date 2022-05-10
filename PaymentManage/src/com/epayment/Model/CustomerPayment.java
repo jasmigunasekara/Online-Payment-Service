@@ -17,7 +17,7 @@ public class CustomerPayment {
 			 {return "Error while connecting to the database for inserting."; }
 			 
 			 // create a prepared statement
-			 String query = " insert into ecpay(`payID`,`payCardType`,`payCardNO`,`payExpiryDate`,`payCVV`,`payDate`,`payTotalAmount`,`payAmount`)"
+			 String query = " insert into ecpay1(`payID`,`payCardType`,`payCardNO`,`payExpiryDate`,`payCVV`,`payDate`,`payTotalAmount`,`payAmount`)"
 			 + " values (?, ?, ?, ?, ?,?,?,?)";
 			 
 			 PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -70,7 +70,7 @@ public class CustomerPayment {
 					 "<th>Pay Amount</th>" +
 					 "<th>Update</th><th>Remove</th></tr>";
 
-			 String query = "select * from ecpay";
+			 String query = "select * from ecpay1";
 			 Statement stmt = con.createStatement();
 			 ResultSet rs = stmt.executeQuery(query);
 			 
@@ -87,8 +87,8 @@ public class CustomerPayment {
 				 String payAmount = Double.toString(rs.getDouble("payAmount"));
 				
 				  // Add into the html table
-				 output += "<tr><td><input id='hidItemIDUpdate'" 
-						 + "name='hidItemIDUpdate' "
+				 output += "<tr><td><input id='hidPayIDUpdate'" 
+						 + "name='hidPayIDUpdate' "
 						 +"type='hidden' value='" + payID
 				         + "'>" + payCardType + "</td>";
 				 output += "<td>" + payCardNO + "</td>";
@@ -100,9 +100,9 @@ public class CustomerPayment {
 				 
 				 // buttons
 				 output += "<td><input name='btnUpdate' type='button' value='Update'"
-						 + "class='btnUpdate btn btn-secondary' data-itemid='\" + itemID + \"' ></td>"
+						 + "class='btnUpdate btn btn-secondary'></td>"
 						 + "<td><input name='btnRemove' type='button' value='Remove' "
-						 + "class='btnRemove btn btn-danger' data-itemid='" + payID + "'></td></tr>"; 
+						 + "class='btnRemove btn btn-danger' data-payid='" + payID + "'></td></tr>"; 
 			 }
 			 
 			 con.close();
@@ -134,7 +134,7 @@ public class CustomerPayment {
 			 {return "Error while connecting to the database for updating."; }
 			 
 			 // create a prepared statement
-			 String query = "UPDATE ecpay SET payCardType=?,payCardNO=?,payExpiryDate=?,payCVV=?,payDate=?,payTotalAmount=?,payAmount=? WHERE payID=?";
+			 String query = "UPDATE ecpay1 SET payCardType=?,payCardNO=?,payExpiryDate=?,payCVV=?,payDate=?,payTotalAmount=?,payAmount=? WHERE payID=?";
 			 
 			 PreparedStatement preparedStmt = con.prepareStatement(query);
 			 

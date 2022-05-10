@@ -12,7 +12,7 @@ public class DBConnect {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			con= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ecpay", "root", "");
+			con= DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/ecpay1", "root", "");
 			
 		} catch (Exception e) {
 		e.printStackTrace();}
