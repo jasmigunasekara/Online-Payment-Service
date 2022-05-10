@@ -4,7 +4,7 @@ import com.epayment.DBconnection.*;
 import java.sql.*;
 
 public class CustomerPayment {
-	public String insertCustomerPayment(String card_type, int card_no, String expiry_date, int cvv,String date, String pay_totalamount,String pay_amount)
+	public String insertCustomerPayment(String card_type, String card_no, String expiry_date, String cvv,String date, String pay_totalamount,String pay_amount)
 	 {
 		 String output = "";
 		 
@@ -25,9 +25,9 @@ public class CustomerPayment {
 			 // binding values
 			 preparedStmt.setInt(1, 0);
 			 preparedStmt.setString(2, card_type);
-			 preparedStmt.setInt(3, card_no );
+			 preparedStmt.setString(3, card_no );
 			 preparedStmt.setString(4, expiry_date );
-			 preparedStmt.setInt(5, cvv);
+			 preparedStmt.setString(5, cvv);
 			 preparedStmt.setString(6, date );
 			 preparedStmt.setDouble(7, Double.parseDouble(pay_totalamount));
 			 preparedStmt.setDouble(8, Double.parseDouble(pay_amount));
@@ -121,7 +121,7 @@ public class CustomerPayment {
 	}
 	
 	
-	public String updateCustomerPayment(String ID, String card_type, int card_no, String expiry_date, int cvv, String date, String pay_totalamount, String pay_amount)
+	public String updateCustomerPayment(String ID, String card_type, String card_no, String expiry_date, String cvv, String date, String pay_totalamount, String pay_amount)
 	{
 		 String output = "";
 		 
@@ -140,9 +140,9 @@ public class CustomerPayment {
 			 
 			 // binding values
 			 preparedStmt.setString(1, card_type);
-			 preparedStmt.setInt(2, card_no);
+			 preparedStmt.setString(2, card_no);
 			 preparedStmt.setString(3, expiry_date);
-			 preparedStmt.setInt(4, cvv);
+			 preparedStmt.setString(4, cvv);
 			 preparedStmt.setString(5, date);
 			 preparedStmt.setDouble(6, Double.parseDouble(pay_totalamount));
 			 preparedStmt.setDouble(7, Double.parseDouble(pay_amount));

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class PaymentsAPI
+ * Servlet implementation class AdminPaymentsAPI
  */
-@WebServlet("/PaymentsAPI")
-public class PaymentsAPI extends HttpServlet {
+@WebServlet("/AdminPaymentsAPI")
+public class AdminPaymentsAPI extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PaymentsAPI() {
+    public AdminPaymentsAPI() {
         super();
         // TODO Auto-generated constructor stub
     }
